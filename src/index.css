@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-app text-ink-900 antialiased;
+  font-feature-settings: 'tnum' 1;
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(37,99,235,0.10), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 0%, rgba(37,99,235,0.06), transparent 55%);
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+/* Subtle glass treatment for elevated surfaces (cards, drawers, modals) */
+.glass {
+  background: rgba(30, 41, 59, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Faint technical grid backdrop, used sparingly behind hero panels */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(24px); opacity: 0.6; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* Plotly modebar cleanup so charts feel embedded, not like a widget */
+.js-plotly-plot .plotly .modebar {
+  right: 4px !important;
+  top: -4px !important;
+}
+.js-plotly-plot .plotly .modebar-btn path {
+  fill: #94A3B8 !important;
+}
